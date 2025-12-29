@@ -10,4 +10,6 @@ function App() {
 }
 
 // Favicon link: https://www.flaticon.com/free-icons/real-estate-agent
-export default App;
+// Images from free to use sites: https://pexels.com, https://unsplash.com
+
+    export default App;
