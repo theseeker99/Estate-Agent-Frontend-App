@@ -1,11 +1,20 @@
-import SearchPage from './pages/SearchPage';
 import './index.css';
+import React from 'react';
+import SearchPage from './pages/SearchPage';
+import PropertyDetails from './pages/PropertyDetails';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
     return (
-        <div className="app-container">
-            <SearchPage />
-        </div>
+        <Router>
+            <div className="app-container">
+                <Routes>
+                    <Route path="/" element={<SearchPage />} />
+
+                    <Route path="/property/:id" element={<PropertyDetails />} />
+                </Routes>
+            </div>
+        </Router>
     );
 }
 

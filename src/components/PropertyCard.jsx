@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PropertyCard = ({ property }) => {
     return (
@@ -16,7 +17,9 @@ const PropertyCard = ({ property }) => {
                 <p className="location">{property.location}</p>
                 <p className="description">{property.description.substring(0, 100)}...</p>
 
-                <button>View Details</button>
+                <Link to={`/property/${property.id}`}>
+                    <button style={{ cursor: 'pointer' }}>View Details</button>
+                </Link>
             </div>
         </div>
     );
