@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 const FavoritesContext = createContext(null);
 export default FavoritesContext
@@ -16,8 +17,9 @@ export const FavoritesProvider = ({ children }) => {
     const addFavorite = (property) => {
         if (!favorites.some(fav => fav.id === property.id)) {
             setFavorites([...favorites, property]);
+            toast.success('🏠 Property added to favorites!');
         } else {
-            alert("This property is already in your favorites!");
+            toast.warning('⚠️ This property is already in your favorites!');
         }
     };
 
