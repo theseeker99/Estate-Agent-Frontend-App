@@ -2,19 +2,22 @@ import './index.css';
 import React from 'react';
 import SearchPage from './pages/SearchPage';
 import PropertyDetails from './pages/PropertyDetails';
+import { FavoritesProvider } from './context/FavoritesContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
     return (
-        <Router>
-            <div className="app-container">
-                <Routes>
-                    <Route path="/" element={<SearchPage />} />
+        <FavoritesProvider>
+            <Router>
+                <div className="app-container">
+                    <Routes>
+                        <Route path="/" element={<SearchPage />} />
 
-                    <Route path="/property/:id" element={<PropertyDetails />} />
-                </Routes>
-            </div>
-        </Router>
+                        <Route path="/property/:id" element={<PropertyDetails />} />
+                    </Routes>
+                </div>
+            </Router>
+        </FavoritesProvider>
     );
 }
 
