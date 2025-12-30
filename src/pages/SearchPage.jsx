@@ -1,8 +1,10 @@
+import './SearchPage.css';
 import React, { useState } from 'react';
 import SearchForm from '../components/SearchForm';
 import propertiesData from '../data/properties.json';
 import PropertyCard from '../components/PropertyCard';
 import { useFavorites } from '../hooks/useFavorites';
+import { motion as Motion } from 'framer-motion';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 
 const SearchPage = () => {
@@ -30,6 +32,24 @@ const SearchPage = () => {
         setFilteredProperties(results);
     };
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    };
+
     const onDragEnd = (result) => {
         const { source, destination, draggableId } = result;
 
@@ -54,54 +74,52 @@ const SearchPage = () => {
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <div className="search-page" style={{ display: 'flex', gap: '20px', padding: '20px' }}>
+            <div className="search-page">
 
-                <div style={{ flex: 3 }}>
+                <div className="search-results-section">
                     <h1>Property Search</h1>
                     <SearchForm onSearch={handleSearch} />
 
                     <Droppable droppableId="results-list" direction="vertical">
                         {(provided) => (
-                            <div
+                            <Motion.div
                                 className="property-list-grid"
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
-                                style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
                             >
                                 {filteredProperties.map((property, index) => (
-                                    <PropertyCard key={property.id} property={property} index={index} isFavoriteItem={false} />
+                                    <Motion.div key={property.id} variants={itemVariants} layout>
+                                        <PropertyCard property={property} index={index} isFavoriteItem={false} />
+                                    </Motion.div>
                                 ))}
                                 {provided.placeholder}
-                            </div>
+                            </Motion.div>
                         )}
                     </Droppable>
                 </div>
 
-                <div style={{ flex: 1, minWidth: '300px' }}>
+                <div className="favorites-sidebar">
                     <Droppable droppableId="favorites-zone">
                         {(provided, snapshot) => (
                             <div
                                 ref={provided.innerRef}
                                 {...provided.droppableProps}
-                                style={{
-                                    background: snapshot.isDraggingOver ? '#e6f7ff' : '#f0f0f0',
-                                    padding: '20px',
-                                    borderRadius: '8px',
-                                    minHeight: '500px',
-                                    border: '2px dashed #ccc'
-                                }}
+                                className={`favorites-sidebar-content ${snapshot.isDraggingOver ? 'dragging-over' : ''}`}
                             >
-                                <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'15px'}}>
+                                <div className="favorites-header">
                                     <h2>Favorites</h2>
                                     {favorites.length > 0 && (
-                                        <button onClick={clearFavorites} style={{background:'red', color:'white', border:'none', padding:'5px 10px', cursor:'pointer', borderRadius:'4px'}}>
+                                        <button onClick={clearFavorites} className="clear-btn">
                                             Clear
                                         </button>
                                     )}
                                 </div>
 
                                 {favorites.length === 0 ? (
-                                    <p style={{color: '#666'}}>Drag properties here to add them to your favorites.</p>
+                                    <p className="favorites-placeholder">Drag properties here to add them to your favorites.</p>
                                 ) : (
                                     favorites.map((fav, index) => (
                                         <PropertyCard key={`fav-${fav.id}`} property={fav} index={index} isFavoriteItem={true} />

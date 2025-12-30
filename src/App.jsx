@@ -1,23 +1,34 @@
+import './App.css';
 import './index.css';
 import React from 'react';
-import SearchPage from './pages/SearchPage';
-import PropertyDetails from './pages/PropertyDetails';
+
+import { ThemeProvider } from './context/ThemeContext';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import Footer from './components/Footer';
+import SearchPage from './pages/SearchPage';
+import ThemeToggle from './components/ThemeToggle';
+import PropertyDetails from './pages/PropertyDetails';
+
 function App() {
     return (
-        <FavoritesProvider>
-            <Router>
-                <div className="app-container">
-                    <Routes>
-                        <Route path="/" element={<SearchPage />} />
-
-                        <Route path="/property/:id" element={<PropertyDetails />} />
-                    </Routes>
-                </div>
-            </Router>
-        </FavoritesProvider>
+        <ThemeProvider>
+            <FavoritesProvider>
+                <Router>
+                    <div className="app-container">
+                        <main className="main-content">
+                            <Routes>
+                                <Route path="/" element={<SearchPage />} />
+                                <Route path="/property/:id" element={<PropertyDetails />} />
+                            </Routes>
+                        </main>
+                        <Footer />
+                        <ThemeToggle />
+                    </div>
+                </Router>
+            </FavoritesProvider>
+        </ThemeProvider>
     );
 }
 

@@ -1,9 +1,10 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ImageGallery from 'react-image-gallery';
+import { useParams, Link } from 'react-router-dom';
 import propertiesData from '../data/properties.json';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import './PropertyDetails.css';
 import 'react-tabs/style/react-tabs.css';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
@@ -17,22 +18,23 @@ const PropertyDetails = () => {
     const allImages = [property.picture, ...(property.images || [])];
 
     const galleryImages = allImages.map(img => {
-        const fixedPath = img.startsWith('/') ? img : `/${img}`;
+        const fixedPath = (img.startsWith('/') || img.startsWith('http')) ? img : `/${img}`;
         return { original: fixedPath, thumbnail: fixedPath };
     });
+
     return (
-        <div className="property-details-container" style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px' }}>
-            <Link to="/" className="back-link" style={{ display: 'inline-block', marginBottom: '20px' }}>
+        <div className="property-details-container">
+            <Link to="/" className="back-link">
                 &larr; Back to Results
             </Link>
 
-            <div className="property-header" style={{ marginBottom: '20px' }}>
+            <div className="property-header">
                 <h1>{property.type} - {property.bedrooms} Bedrooms</h1>
-                <h2 style={{ color: '#007bff' }}>£{property.price.toLocaleString()}</h2>
+                <h2>£{property.price.toLocaleString()}</h2>
                 <p className="location">{property.location}</p>
             </div>
 
-            <div className="gallery-section" style={{ marginBottom: '40px' }}>
+            <div className="gallery-section">
                 <ImageGallery items={galleryImages} showPlayButton={false} />
             </div>
 
@@ -45,7 +47,7 @@ const PropertyDetails = () => {
                     </TabList>
 
                     <TabPanel>
-                        <div className="tab-content" style={{ padding: '20px', background: '#fff', border: '1px solid #ddd', borderTop: 'none' }}>
+                        <div className="tab-content">
                             <h3>Property Description</h3>
                             <p>{property.description}</p>
                             <p><strong>Tenure:</strong> {property.tenure}</p>
@@ -54,12 +56,12 @@ const PropertyDetails = () => {
                     </TabPanel>
 
                     <TabPanel>
-                        <div className="tab-content" style={{ padding: '20px', background: '#fff', border: '1px solid #ddd', borderTop: 'none', textAlign: 'center' }}>
+                        <div className="tab-content center-content">
                             {property.floorPlan ? (
                                 <img
                                     src={property.floorPlan}
                                     alt="Property Floor Plan"
-                                    style={{ maxWidth: '100%', height: 'auto', border: '1px solid #eee' }}
+                                    style={{ maxWidth: '100%', height: 'auto' }}
                                 />
                             ) : (
                                 <p>No floor plan available for this property.</p>
@@ -68,7 +70,7 @@ const PropertyDetails = () => {
                     </TabPanel>
 
                     <TabPanel>
-                        <div className="tab-content" style={{ padding: '0', background: '#fff', border: '1px solid #ddd', borderTop: 'none' }}>
+                        <div className="tab-content no-padding">
                             {property.googleMap ? (
                                 <iframe
                                     src={property.googleMap}

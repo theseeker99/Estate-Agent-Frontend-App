@@ -1,0 +1,99 @@
+.search-page {
+    display: flex;
+    gap: var(--spacing-xl);
+    padding: 0;
+}
+
+.search-results-section {
+    flex: 3;
+}
+
+.search-results-section h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.property-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.favorites-sidebar {
+    flex: 1;
+    min-width: 300px;
+}
+
+.favorites-sidebar-content {
+    background-color: var(--bg-surface);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    min-height: 500px;
+    height: fit-content;
+    position: sticky;
+    top: var(--spacing-xl);
+    transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.favorites-sidebar-content.dragging-over {
+    background-color: var(--bg-surface-elevated);
+    border-color: var(--primary);
+    border-style: solid;
+}
+
+.favorites-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.favorites-header h2 {
+    font-size: 1.25rem;
+    color: var(--text-main);
+}
+
+.clear-btn {
+    background-color: #ef4444;
+    color: white;
+    font-size: 0.875rem;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    transition: background-color var(--transition-fast);
+}
+
+.clear-btn:hover {
+    background-color: #dc2626;
+}
+
+.favorites-placeholder {
+    color: var(--text-muted);
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    font-style: italic;
+}
+
+@media (max-width: 900px) {
+    .search-page {
+        flex-direction: column;
+    }
+
+    .favorites-sidebar {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .favorites-sidebar-content {
+        min-height: auto;
+        position: static;
+    }
+}

@@ -1,0 +1,21 @@
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: background-color var(--transition-normal);
+}
+
+.theme-toggle:hover {
+    background-color: var(--primary-hover);
+    box-shadow: var(--shadow-xl);
+}
