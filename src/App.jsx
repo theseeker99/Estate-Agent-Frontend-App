@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Header from './components/Header';
 import Footer from './components/Footer';
 import SearchPage from './pages/SearchPage';
 import ThemeToggle from './components/ThemeToggle';
@@ -19,6 +20,7 @@ function App() {
             <FavoritesProvider>
                 <Router>
                     <div className="app-container">
+                        <Header />
                         <main className="main-content">
                             <Routes>
                                 <Route path="/" element={<SearchPage />} />

@@ -5,7 +5,7 @@ import propertiesData from '../data/properties.json';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { FaArrowLeft, FaFileAlt, FaLayerGroup, FaMapMarkedAlt, FaBed, FaMapMarkerAlt, FaPoundSign, FaCalendarAlt, FaCheck } from 'react-icons/fa';
 
-import './PropertyDetails.css';
+import '../styles/pages/PropertyDetails.css';
 import 'react-tabs/style/react-tabs.css';
 import 'react-image-gallery/styles/css/image-gallery.css';
 

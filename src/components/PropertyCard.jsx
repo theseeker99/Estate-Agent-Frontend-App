@@ -1,5 +1,5 @@
 import React from 'react';
-import './PropertyCard.css';
+import '../styles/components/PropertyCard.css';
 import { Link } from 'react-router-dom';
 import { Draggable } from '@hello-pangea/dnd';
 import { useFavorites } from '../hooks/useFavorites';

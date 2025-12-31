@@ -1,5 +1,6 @@
 .property-details-container {
-    max-width: 1000px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
     padding: var(--spacing-md);
 }
@@ -31,6 +32,10 @@
     color: var(--text-main);
     margin-bottom: var(--spacing-sm);
     letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
 }
 
 .property-header h2 {
@@ -39,11 +44,19 @@
     font-weight: 700;
     color: var(--primary);
     margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
 }
 
 .location {
     color: var(--text-muted);
     font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
 }
 
 .gallery-section {

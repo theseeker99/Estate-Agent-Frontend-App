@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { FaHome, FaPoundSign, FaBed, FaMapMarkerAlt, FaCalendarAlt, FaSearch } from 'react-icons/fa';
 
-import './SearchForm.css';
+import '../styles/components/SearchForm.css';
 import 'rc-slider/assets/index.css';
 import 'react-datepicker/dist/react-datepicker.css';
 

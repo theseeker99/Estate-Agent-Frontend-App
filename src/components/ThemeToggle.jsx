@@ -1,5 +1,5 @@
 import React from 'react';
-import './ThemeToggle.css';
+import '../styles/components/ThemeToggle.css';
 import { motion as Motion } from 'framer-motion';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';

@@ -1,4 +1,4 @@
-import './SearchPage.css';
+import '../styles/pages/SearchPage.css';
 import React, { useState } from 'react';
 import SearchForm from '../components/SearchForm';
 import propertiesData from '../data/properties.json';
