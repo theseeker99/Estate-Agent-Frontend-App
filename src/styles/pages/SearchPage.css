@@ -2,6 +2,7 @@
     display: flex;
     gap: var(--spacing-xl);
     padding: 0;
+    animation: fadeIn 0.4s ease-out;
 }
 
 .filter-sidebar {
@@ -25,11 +26,13 @@
     font-weight: 700;
     font-style: italic;
     margin-bottom: var(--spacing-lg);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: var(--gradient-primary);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.02em;
+    animation: fadeInUp 0.5s ease-out, gradientShift 6s ease infinite;
 }
 
 .property-list-grid {
@@ -39,28 +42,30 @@
     width: 100%;
 }
 
-/* Right Sidebar - Favorites */
 .favorites-sidebar {
-    flex: 0 0 300px;
-    min-width: 300px;
+    flex: 0 0 320px;
+    min-width: 320px;
 }
 
 .favorites-sidebar-content {
     background-color: var(--bg-surface);
     border: 2px dashed var(--border-color);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     padding: var(--spacing-lg);
     min-height: 500px;
     height: fit-content;
     position: sticky;
     top: var(--spacing-xl);
-    transition: background-color var(--transition-normal), border-color var(--transition-normal);
+    transition: all var(--transition-smooth);
+    animation: slideInRight 0.5s ease-out;
 }
 
 .favorites-sidebar-content.dragging-over {
     background-color: var(--bg-surface-elevated);
     border-color: var(--primary);
     border-style: solid;
+    box-shadow: var(--shadow-glow);
+    transform: scale(1.01);
 }
 
 .favorites-header {
@@ -68,34 +73,48 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: var(--spacing-lg);
-    padding-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
     border-bottom: 1px solid var(--border-color);
 }
 
 .favorites-header h2 {
     font-size: 1.25rem;
     color: var(--text-main);
+    font-family: var(--font-heading);
+    font-style: italic;
 }
 
 .clear-btn {
-    background-color: #ef4444;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
     color: white;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    transition: background-color var(--transition-fast);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    transition: all var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
 }
 
 .clear-btn:hover {
-    background-color: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md), 0 0 15px rgba(239, 68, 68, 0.3);
+}
+
+.clear-btn:active {
+    transform: translateY(0);
 }
 
 .favorites-placeholder {
     color: var(--text-muted);
     text-align: center;
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-2xl) var(--spacing-lg);
     font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--bg-body);
+    animation: pulse 3s ease-in-out infinite;
 }
 
 @media (max-width: 1200px) {
@@ -135,5 +154,9 @@
     .favorites-sidebar-content {
         min-height: auto;
         position: static;
+    }
+
+    .search-results-section h1 {
+        font-size: 2rem;
     }
 }
