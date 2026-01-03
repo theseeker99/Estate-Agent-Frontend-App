@@ -1,7 +1,7 @@
 import Slider from 'rc-slider';
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { FaHome, FaPoundSign, FaBed, FaMapMarkerAlt, FaCalendarAlt, FaSearch } from 'react-icons/fa';
+import { FaHome, FaPoundSign, FaBed, FaMapMarkerAlt, FaCalendarAlt, FaSearch, FaUndo } from 'react-icons/fa';
 
 import '../styles/components/SearchForm.css';
 import 'rc-slider/assets/index.css';
@@ -25,6 +25,24 @@ const SearchForm = ({ onSearch }) => {
             maxBedrooms,
             postcode,
             dateAfter
+        });
+    };
+
+    const handleReset = () => {
+        setType('any');
+        setPriceRange([0, 1000000]);
+        setMinBedrooms(0);
+        setMaxBedrooms(10);
+        setPostcode('');
+        setDateAfter(null);
+        onSearch({
+            type: 'any',
+            minPrice: 0,
+            maxPrice: 1000000,
+            minBedrooms: 0,
+            maxBedrooms: 10,
+            postcode: '',
+            dateAfter: null
         });
     };
 
@@ -96,9 +114,14 @@ const SearchForm = ({ onSearch }) => {
                 />
             </div>
 
-            <button type="submit" className="search-submit-btn">
-                <FaSearch /> Update Results
-            </button>
+            <div className="search-form-buttons">
+                <button type="submit" className="search-submit-btn">
+                    <FaSearch /> Update Results
+                </button>
+                <button type="button" className="search-reset-btn" onClick={handleReset}>
+                    <FaUndo /> Reset Filters
+                </button>
+            </div>
         </form>
     );
 };
