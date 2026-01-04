@@ -124,7 +124,7 @@ const SearchPage = () => {
                                 </div>
 
                                 {favorites.length === 0 ? (
-                                    <p className="favorites-placeholder">Drag properties here or click `❤️` to add them to your favorites.</p>
+                                    <p className="favorites-placeholder">Drag propertie here or click `❤️` to add them to your favorites.</p>
                                 ) : (
                                     favorites.map((fav, index) => (
                                         <PropertyCard key={`fav-${fav.id}`} property={fav} index={index} isFavoriteItem={true} />
