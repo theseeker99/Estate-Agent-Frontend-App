@@ -176,17 +176,9 @@
 
 @media (max-width: 768px) {
     .property-card {
-        touch-action: manipulation;
+        touch-action: pan-y;
         user-select: none;
         -webkit-user-select: none;
-        -webkit-touch-callout: none;
-    }
-
-    .property-card.is-dragging {
-        touch-action: none;
-        opacity: 0.9;
-        transform: scale(1.02);
-        box-shadow: var(--shadow-xl);
     }
 
     .favorites-sidebar-content {
@@ -205,10 +197,5 @@
     .fav-btn {
         width: 48px;
         height: 48px;
-        touch-action: manipulation;
-    }
-
-    .view-details-btn {
-        touch-action: manipulation;
     }
 }
