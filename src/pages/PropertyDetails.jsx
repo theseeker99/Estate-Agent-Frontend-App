@@ -71,7 +71,7 @@ const PropertyDetails = () => {
                     {/* Info tabs */}
                     <div className="info-tabs">
                         <Tabs>
-                            <TabList style={{ overflowY: 'hidden' }}>
+                            <TabList>
                                 <Tab><FaFileAlt /> Description</Tab>
                                 <Tab><FaLayerGroup /> Floor Plan</Tab>
                                 <Tab><FaMapMarkedAlt /> Map</Tab>
@@ -115,14 +115,14 @@ const PropertyDetails = () => {
                                             src={property.googleMap}
                                             width="100%"
                                             height="450"
-                                            style={{ border: 0, display: 'block' }}
+                                            className="map-iframe"
                                             allowFullScreen=""
                                             loading="lazy"
                                             referrerPolicy="no-referrer-when-downgrade"
                                             title="Property Location"
                                         ></iframe>
                                     ) : (
-                                        <div className="no-content-message" style={{ padding: '40px' }}>
+                                        <div className="no-content-message with-padding">
                                             <FaMapMarkedAlt />
                                             <p>Map location not available.</p>
                                         </div>

@@ -1,5 +1,21 @@
 /* Property details page styles */
 
+/* Tab list overflow - prevents vertical scroll CSP-compliant */
+.react-tabs__tab-list {
+    overflow-y: hidden;
+}
+
+/* Map iframe styling - CSP-compliant replacement for inline */
+.map-iframe {
+    border: 0;
+    display: block;
+}
+
+/* No content padding variant - CSP-compliant */
+.no-content-message.with-padding {
+    padding: 40px;
+}
+
 /* Main container */
 .property-details-container {
     width: 100%;
